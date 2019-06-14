@@ -7,7 +7,11 @@
       %span.icon-bar
       %span.icon-bar
     .navbar-collapse.collapse.navbar-responsive-collapse
-      .col-md-6
+      %ul.nav.navbar-nav.col-md-6
+        %li
+          = link_to new_member_path, class: "navbar-link btn btn-primary" do
+            %i.fa.fa-users
+            Add Members
       - if current_user
         %ul.nav.navbar-right.col-md-4
           %li.col-md-8.user-name.text-right
