@@ -91,24 +91,26 @@
     padding-left: 15px;
   }
 }
-
-.jumbotron {
-  text-align: center;
-  background-image: image_url('meeting1.jpg');
-  background-size: cover;
-  // background-position: 0 60%;
-  color: #fff;
-  font-family: "Helvetica Neue" !important;
-  font-stretch: expanded;
-  padding-top: 95px;
-  padding-bottom: 95px;
-  margin-left: 15px;
-  margin-right: 15px;
-  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
-  h2, p {
+.container {
+  .jumbotron {
+    text-align: center;
+    background-image: image_url('meeting1.jpg');
+    background-size: cover;
+    // background-position: 0 60%;
     color: #fff;
+    font-family: "Helvetica Neue" !important;
+    font-stretch: expanded;
+    padding-top: 95px;
+    padding-bottom: 95px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+    h2, p {
+      color: #fff;
+    }
   }
 }
+
 
 .no-left-padding {
   padding-left: 0 !important;
