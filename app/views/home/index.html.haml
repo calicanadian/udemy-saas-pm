@@ -1,2 +1,31 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+- if current_user
+  %h3= "Welcome: #{current_user.email}"
+- else
+  .jumbotron
+    %h2 Welcome to the Project MGMT App!
+    %p.lead You'll love managing your Projects with our application. Sign Up!
+
+  .row
+    .plans.clearfix
+      .col-lg-3.col-lg-offset-3.plan
+        %h2 Free Plan
+        .price.pull-right
+          Price: FREE
+        .features
+          %ul
+            %li Unlimited file uploads
+            %li Responsive design
+            %li Access anywhere
+            %li 1 Project
+        %p= link_to "Sign Up", new_user_registration_path(plan: 'free'), class: "btn btn-primary sign-up"
+      .col-lg-3.plan
+        %h2 Premium Plan
+        .price.pull-right
+          Price: $10
+        .features
+          %ul
+            %li Unlimited file uploads
+            %li Responsive design
+            %li Access anywhere
+            %li.extra Unlimited projects
+        %p= link_to "Sign Up", new_user_registration_path(plan: 'premium'), class: "btn btn-primary sign-up"
