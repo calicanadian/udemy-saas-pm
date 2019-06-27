@@ -1,8 +1,11 @@
 class Tenant < ApplicationRecord
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
+  has_many :projects, dependent: :destroy
+  validates_uniqueness_of :title
   validates_uniqueness_of :name
   validates_presence_of :name
+  validate :free_plan_can_only_have_one_project
 
   def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
@@ -16,6 +19,21 @@ class Tenant < ApplicationRecord
       tenant.save    # create the tenant
     end
     return tenant
+  end
+
+  def free_plan_can_only_have_one_project
+    if self.new_record? && (tenants.projects.count > 0) && (tenant.plan == 'free')
+      errors.add(:base, "Free plans cannot have more than one project")
+    end
+  end
+
+  def self.by_plan_and_tenant(tenant_id)
+    tenant = Tenant.find(tenant_id)
+    if tenant.plan == 'premium'
+      tenant.projects
+    else
+      tenant.projects.order(:id).limit(1)
+    end
   end
 
   # ------------------------------------------------------------------------

@@ -4,7 +4,7 @@
   .panel-body
     = form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :put, class: "form login" }) do |f|
       = bootstrap_devise_error_messages!
-      = f.hidden_field :confirmation_token, @confirmation_token
+      = hidden_field_tag :confirmation_token, @confirmation_token
       .form-group
         = f.label :password, class: "control-label"
         = f.password_field :password, class: 'form-control'

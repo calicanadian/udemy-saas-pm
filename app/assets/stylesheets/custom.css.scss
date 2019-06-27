@@ -124,3 +124,13 @@
   list-style: none;
   padding-left: 0;
 }
+
+
+.table tr td {
+  a.mail-link {
+    color: #428bca;
+  }
+  a.mail-link:hover {
+    background: none;
+  }
+}

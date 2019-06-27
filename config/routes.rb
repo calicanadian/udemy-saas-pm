@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-
-  resources :members
-  get 'home/index'
   root :to => "home#index"
 
+  get 'home/index'
+
+  resources :tenants do
+    resources :projects
+  end
+  
+  resources :members
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation # override controller
