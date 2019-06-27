@@ -36,6 +36,10 @@ class Tenant < ApplicationRecord
     end
   end
 
+  def can_create_projects?
+    (plan == 'free' && projects.count < 1) || (plan == 'premium')
+  end
+
   # ------------------------------------------------------------------------
   # new_signups_not_permitted? -- returns true if no further signups allowed
   # args: params from user input; might contain a special 'coupon' code

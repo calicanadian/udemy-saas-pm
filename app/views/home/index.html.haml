@@ -1,5 +1,6 @@
 - if current_user
-  %h3= "Welcome: #{current_user.email}"
+  %h3.pull-right= "Organization: #{@tenant.name}"
+  = render 'projects/list'
 - else
   .jumbotron
     %h2 Welcome to the Project MGMT App!
