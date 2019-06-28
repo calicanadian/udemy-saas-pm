@@ -2,7 +2,9 @@ class Tenant < ApplicationRecord
   acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
   has_many :projects, dependent: :destroy
-  validates_uniqueness_of :title
+  has_one :payment
+  accepts_nested_attributes_for :payment
+  # validates_uniqueness_of :title
   validates_uniqueness_of :name
   validates_presence_of :name
   validate :free_plan_can_only_have_one_project
@@ -22,7 +24,7 @@ class Tenant < ApplicationRecord
   end
 
   def free_plan_can_only_have_one_project
-    if self.new_record? && (tenants.projects.count > 0) && (tenant.plan == 'free')
+    if self.new_record? && (self.projects.count > 0) && (self.plan == 'free')
       errors.add(:base, "Free plans cannot have more than one project")
     end
   end
