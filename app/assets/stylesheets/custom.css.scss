@@ -21,7 +21,7 @@
 
 .clear {
   clear: both;
-  
+
 }
 
 .logout {
@@ -138,4 +138,27 @@
   a.mail-link:hover {
     background: none;
   }
+}
+
+.navbar.navbar-static-top {
+  background: #000;
+  color: #fff !important;
+  padding-bottom: 5px;
+
+  .logout {
+    padding-left: 0;
+  }
+
+  a.navbar-brand {
+    color: inherit;
+
+    .fa {
+      background: #fff;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      color: red;
+      padding: 6px;
+    }
+  }
+
 }

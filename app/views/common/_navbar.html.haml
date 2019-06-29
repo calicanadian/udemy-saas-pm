@@ -1,0 +1,35 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    %span
+      = link_to root_path, class: "navbar-brand" do
+        %i.fa.fa-rocket
+        Project Management App
+
+    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      %ul.nav.navbar-nav.col-md-6
+        - if current_user && current_user.is_admin?
+          %li
+            = link_to new_member_path, class: "navbar-link btn btn-primary" do
+              %i.fa.fa-users
+              Add Members
+          %li
+            = link_to edit_plan_path, class: "btn btn-primary navbar-link" do
+              %i.fa.fa-briefcase
+              Change Plan
+
+      %ul.nav.navbar-right.col-md-4
+        - if current_user
+          %li.col-md-8.user-name.text-right
+            %i.fa.fa-user
+            = current_user.email
+          %li.col-md-4.logout
+            = link_to "logout", destroy_user_session_path, class: "btn btn-xs btn-danger", method: :delete
+        - else
+          %li.col-md-4.col-md-offset-8
+            = link_to new_user_session_path, class: "btn btn-xs btn-primary" do
+              %i.fa.fa-user
+              Sign In
